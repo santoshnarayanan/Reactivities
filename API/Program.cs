@@ -12,7 +12,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddTransient<DataSeed>();
 
 var app = builder.Build();
 
@@ -21,6 +21,7 @@ using (var scope = app.Services.CreateScope())
 {
     var dataContext = scope.ServiceProvider.GetRequiredService<DataContext>();
     dataContext.Database.Migrate();
+    await DataSeed.SeedData(dataContext);
 }
 
 // Configure the HTTP request pipeline.
