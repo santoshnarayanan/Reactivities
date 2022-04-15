@@ -11,14 +11,15 @@ namespace Persistence
 {
     public class DataContext : DbContext
     {
-        //public DataContext(DbContextOptions options) : base(options)
-        //{
-            
-        //}
+        public DataContext(DbContextOptions options) : base(options)
+        {
+
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var connectionStringBuilder = new SqliteConnectionStringBuilder { DataSource = "Reactivities.db" };
+            //The below connection string needs only DataSource for Sqlite database
+            var connectionStringBuilder = new SqliteConnectionStringBuilder { DataSource = "Reactivities.db" }; 
             var connectionString = connectionStringBuilder.ToString();
             var connection = new SqliteConnection(connectionString);
 

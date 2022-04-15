@@ -12,6 +12,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//DataSeed should be Transient once all records are inserted operation is over 
 builder.Services.AddTransient<DataSeed>();
 
 var app = builder.Build();
