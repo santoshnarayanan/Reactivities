@@ -3,6 +3,17 @@ using Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy",
+                      policy =>
+                      {
+                          //policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:3000");
+                          policy.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin();
+                      });
+});
+
+
 // add services to DI container
 builder.Services.AddDbContext<DataContext>();
 
@@ -15,6 +26,7 @@ builder.Services.AddSwaggerGen();
 
 //DataSeed should be Transient once all records are inserted operation is over 
 builder.Services.AddTransient<DataSeed>();
+
 
 var app = builder.Build();
 
@@ -33,7 +45,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
+
+app.UseRouting();
+
+app.UseCors("CorsPolicy");
 
 app.UseAuthorization();
 
