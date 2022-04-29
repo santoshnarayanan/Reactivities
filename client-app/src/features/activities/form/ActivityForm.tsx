@@ -36,4 +36,5 @@ export default function ActivityForm({activity:selectedActivity, closeForm}:Prop
             </Form>
         </Segment>
     )
+
 }
