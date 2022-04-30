@@ -16,6 +16,9 @@ function App() {
     })
   },[])
 
+  function handleDeleteActivity(id:string){
+    setActivities([...activities.filter(x=>x.id !== id)]);
+  }
 
   function handleSelectActivity(id:string){
     setSelectedActivity(activities.find(x=> x.id === id));
@@ -57,6 +60,7 @@ function App() {
           openForm ={handleFormOpen}
           closeForm={handleFormClose}
           createOrEdit={handleCreateOrEditActivity}
+          deleteActivity = {handleDeleteActivity}
           />Remo
       </Container>
        
