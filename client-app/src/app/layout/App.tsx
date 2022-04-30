@@ -38,7 +38,7 @@ function App() {
     <>
       <NavBar openForm={handleFormOpen}/>
       <Container style={{marginTop:'7em'}}>
-        <ActivityDashboard 
+        <ActivityDashboard
           activites={activities}
           selectedActivity={selectedActivity}
           selectActivity={handleSelectActivity}
@@ -46,7 +46,7 @@ function App() {
           editMode={editMode}
           openForm ={handleFormOpen}
           closeForm={handleFormClose}
-          />
+          />Remo
       </Container>
        
     </>
