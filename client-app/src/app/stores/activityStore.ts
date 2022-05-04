@@ -2,29 +2,35 @@ import {makeAutoObservable} from "mobx";
 import {Activity} from "../models/activity";
 import agent from "../../api/agent";
 
-export default class ActivityStore{
-    activities:Activity[] = [];
-    selectedActivity:Activity |null = null;
+export default class ActivityStore {
+    activities: Activity[] = [];
+    selectedActivity: Activity | null = null;
     editMode = false;
     loading = false;
     loadingInitial = false;
 
-    constructor(){
+    constructor() {
         makeAutoObservable(this)
     }
 
     loadActivities = async () => {
-        this.loadingInitial = true;
-        try{
+        this.setLoadingInitial(true);
+        try {
             const activities = await agent.Activities.list();
+
             activities.forEach(activity => {
                 activity.date = activity.date.split('T')[0];
                 activities.push((activity));
             })
-            this.loadingInitial = false;
-        }catch(error){
+            this.setLoadingInitial(false);
+
+        } catch (error) {
             console.log(error);
-            this.loadingInitial = false;
+            this.setLoadingInitial(false);
+
         }
+    }
+    setLoadingInitial = (state: boolean) => {
+        this.loadingInitial = state;
     }
 }
