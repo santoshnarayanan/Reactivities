@@ -6,12 +6,7 @@ import { useStore } from "../../../app/stores/store";
 export default observer(function ActivityForm() {
   const { activityStore } = useStore();
   const {
-    selectedActivity,
-    closeForm,
-    createActivity,
-    updateActivity,
-    loading,
-  } = activityStore;
+    selectedActivity, createActivity, updateActivity, loading} = activityStore;
 
   const initialState = selectedActivity ?? {
     id: "",
@@ -83,7 +78,6 @@ export default observer(function ActivityForm() {
           content="Submit"
         />
         <Button
-          onClick={closeForm}
           floated="right"
           type="button"
           content="Cancel"
