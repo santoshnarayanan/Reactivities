@@ -11,8 +11,6 @@ import ActivityDetails from '../../features/activities/details/ActivityDetails';
 function App() {
   const location= useLocation();
 
-
-
   return (
     <>
       <NavBar />
