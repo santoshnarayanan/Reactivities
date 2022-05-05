@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 import React, { ChangeEvent, useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { Button, Form, Segment } from "semantic-ui-react";
 import LoadingComponent from "../../../app/layout/LoadingComponent";
 import { useStore } from "../../../app/stores/store";
@@ -93,6 +93,7 @@ export default observer(function ActivityForm() {
           content="Submit"
         />
         <Button
+          as={Link} to="/activities"
           floated="right"
           type="button"
           content="Cancel"
