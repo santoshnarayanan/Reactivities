@@ -1,3 +1,4 @@
+using API.Middleware;
 using Application.Activities;
 using Application.Core;
 using FluentValidation.AspNetCore;
@@ -49,6 +50,9 @@ using (var scope = app.Services.CreateScope())
 }
 
 // Configure the HTTP request pipeline.
+
+app.UseMiddleware<ExceptionMiddleware>();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
